@@ -1,0 +1,235 @@
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>URP - OYCAT Project</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.3/leaflet.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.min.js"></script>
+  <script src="lib/js/leaflet.ajax.min.js"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.3/leaflet.css" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.js"></script>
+  <script src="json/revyards.js?ver=1.0"></script>
+  <script src="json/fulness.js?ver=1.0"></script>
+  <script src="json/decommissionedd.js?ver=1.0"></script>
+  <script src="json/operationall.js?ver=1.0"></script>
+  <script src="json/borders.js?ver=1.0"></script>
+  <script src="json/platformsWithPrefs.js?ver=1.0"></script>
+  <script src="json/platformlists.js?ver=1.0"></script>
+
+  <script src="javascripts/leaflet.timeline.js"></script>
+  <script src="javascripts/algo.js"></script>
+  <script src="javascripts/Chart.js"></script>
+  <script src="javascripts/navigation.js"></script>
+
+
+  <link href="css/custom.css?ver=1.0" rel="stylesheet">
+
+  <!--============= COOKIES ============= -->
+  <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.css">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.js"></script>
+  <script>
+  window.addEventListener("load", function(){
+    window.cookieconsent.initialise({
+      "palette": {
+        "popup": {
+          "background": "#252e39"
+        },
+        "button": {
+          "background": "#14a7d0"
+        }
+      },
+      "position": "bottom-right"
+    })});
+  </script>
+  <!--=================================== -->
+
+<script>
+$(document).ready(function() {
+
+var id = '#dialog';
+
+//Get the screen height and width
+var maskHeight = $(document).height();
+var maskWidth = $(window).width();
+
+//Set heigth and width to mask to fill up the whole screen
+$('#mask').css({'width':maskWidth,'height':maskHeight});
+
+//transition effect
+$('#mask').fadeIn(500);
+$('#mask').fadeTo("slow",0.5);
+
+//Get the window height and width
+var winH = $(window).height();
+var winW = $(window).width();
+
+//Set the popup window to center
+$(id).css('top',  winH/2-$(id).height()/2);
+$(id).css('left', winW/2-$(id).width()/2);
+
+//transition effect
+$(id).fadeIn(2000);
+
+//if close button is clicked
+$('.window .close').click(function (e) {
+//Cancel the link behavior
+e.preventDefault();
+
+$('#mask').hide();
+$('.window').hide();
+});
+
+//if mask is clicked
+$('#mask').click(function () {
+$(this).hide();
+$('.window').hide();
+});
+
+});
+</script>
+
+  </head>
+  <body>
+
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-63413335-2', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+<div id="boxes">
+  <div id="dialog" class="window">
+    <p>
+      We have had lots of great feedback and discussion over the past couple of
+      weeks as we’ve showcased OYCAT beta. We really appreciate the feedback we’ve
+      got, and we’re excitedly working on further developments.
+    </p>
+    <p>These developments include:</p>
+    <ul>
+      <li>
+        Improved Yard data capture enabling yards to populate their own details
+        for their own yards in a capability & capacity matrix
+      </li>
+      <li>
+        Data integrity on platforms with verification of tonnages, split into
+        topside/jacket/subsea, expected remove/remain scope for each platform,
+        age of platform and validation on projected CoP date
+      </li>
+      <li>
+        Developing scenarios for the CoP profile including impact on CoP dates
+        due to oil price fluctuations, advancements in late life extension
+        technology, early closure of certain platforms due to structural
+        integrity issues, etc.
+      </li>
+    </ul>
+    <p style="font-size:15px">Do you have any more comments? Want to be the first to know about this?</p>
+    <p> </p>
+    <button type="button" style="font-size:15px; border: 2px solid; background-color: #3CAAFA;  border-radius: 7px; color: white;" onclick="window.open('mailto:martin@d3-consulting.com')">Send us an e-mail!</button><p>        </p>
+    <button type="button" href="#" style="font-size:15px; border: 2px solid; background-color: #3CAAFA;  border-radius: 7px; color: white;" class="close agree" style="height: 50px">Close this window</button>
+
+    <div id="popupfoot">
+
+    </div>
+    </div>
+  <div id="mask"></div>
+</div>
+
+
+
+
+
+    <!--============= OVERLAY ============= -->
+    <div id="myNav" class="overlay">
+      <a href="javascript:void(0)" class="closebtn  " onclick="closeNav()">&times;</a>
+      <div class="overlay-content">
+        <a href="#">OYCAT - Onshore Yard Capacity Assessment Tool</a>
+        <p>
+          This tool is under development to help answer the question: "Do we have enough capacity in the supply chain to receive the offshore assets being decommissioned?"<br/><br/>
+
+          Click <a style="display: inline; color: white; font: 18px Titillium Web, Titillium Web, Titillium Web" href="https://d3-consulting.com/videos/"> here</a> to hear Martin Bjerregaard talk to you about this tool</br></br>
+
+          It is still in Beta version and we welcome all comments and suggestions to improve. Over time we will be refining the input data and algorithms to continuously improve the Tool.<br/><br/>
+
+          The Tool works by allocating platforms and subsea installations to the nearest onshore disposal yard, and if that yard is already 'full' then the algorithm takes the platform to the next nearest yard.<br/><br/>
+
+          The scenario shown in this Beta version is based on the first 10 years including those assets known to D3 for removal, and then remaining platforms being removed over the subsequent 20 years. All removals are at a random distribution and thus this scenario is just for demonstration purposes.<br/><br/>
+
+          We invite onshore disposal yards to confirm their details held about their yard so we can consistently refine.<br/><br/>
+
+          The Tool has been developed by D3 Consulting with our own funds with the intention to work with the industry to get more clarity on disposal capacity. Please get in touch to discuss.<br/><br/>
+
+          Future developments include:<br/><br/>
+          - Developing robust decommissioning scenarios<br/><br/>
+          - Firming up on yard data and capacities<br/><br/>
+          - Matching yard capabilities (i.e. quay facility to receive asset, permitted wastes, etc)<br/><br/>
+          - Finer detail on platform and subsea quantities coming to shore versus leave in-situ<br/><br/>
+
+          Martin Bjerregaard<br/>
+          Tel: +44 7969 725 418<br/>
+          Martin@d3-consulting.com<br/>
+        </p>
+      </div>
+    </div>
+
+    <span class="overlay-btn" onclick="openNav()">How This Tool Works</span>
+    <!--=================================== -->
+
+    <!--============== LOGOS ============== -->
+    <a target="blank" href="http://www.urplatform.eu">
+      <div class="logo" id= "logo">
+        <img src="img/urplogo1.png" style="width: 3.5vw; z-index: 3" />
+      </div>
+    </a>
+
+    <a target="blank" href="https://d3-consulting.com/">
+      <div class="d3logo" id= "d3logo">
+        <img src="img/d3logo.png" style="width: 11.5vw; z-index: 3" />
+      </div>
+    </a>
+    <!--=================================== -->
+
+    <!--============== CHART ============== -->
+    <div class="chart" id= "graph">
+      <canvas  id="myChart" height="200" bottom="0"></canvas>
+    </div>
+    <div id="js-legend" class="chart-legend"></div>
+    <!--=================================== -->
+
+    <!--============== TABLE ============== -->
+    <div id="info" style='table {width: 100%;} tr {} th { background-color: #cba;} td {  max-width: 30px; font: 11px/22px Titillium Web, Titillium Web, Titillium Web; height: 3px;}'>
+      <img src="img/oycatlogo.png" style="width:100%; z-index:2"/>
+      <h2></h2>
+      <p></p>
+      <table>
+        <tr><td>Total onshore yard capacity (Te)</td><td class="number"><b id="totalYardCapa"></b></td></tr>
+        <tr><td>Decomissioned platforms this year</td><td class="number"><b id="decoPlat"></b></td>
+          <tr><td>Decomissioned tonnage this year (Te) </td><td class="number"><b id="decoTonnage"></b></td></tr>
+          <tr><td>Spare capacity in onshore yards (Te) </td><td class="number"><b id="spareCapa"></b></td></tr>
+        </table>
+        <p> Decommissioned in Current Year</p>
+        <ul id="displayed-list"></ul>
+      </div>
+      <!--=================================== -->
+
+      <!--============ LINKEDIN ============= -->
+      <div id="beta" style='table {width: 100%;} tr {} th { background-color: #cba;} td {  max-width: 30px; font: 11px/22px Titillium Web, Titillium Web, Titillium Web; height: 3px;}'>
+        <table class="table2">
+          <tr><td style="width:40%"><img src="svg/beta.svg" style="width:100%" /></td><td><button type="button" onclick="window.open('https://www.linkedin.com/feed/update/urn:li:activity:6271302921468538880/')">Input Your Comments Here</button></td></tr>
+        </table>
+      </div>
+      <!--=================================== -->
+
+      <!--=============== MAP =============== -->
+      <div id="map" style="z-index:0"></div>
+      <!--=================================== -->
+
+    </body>
+
+    <script src="javascripts/chartConfig.js"></script>
+    <script src="javascripts/map.js"></script>
+    <script src="javascripts/timeline.js"></script>
+    </html>

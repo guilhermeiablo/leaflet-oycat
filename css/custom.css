@@ -1,0 +1,350 @@
+@import url(https://fonts.googleapis.com/css?family=Titillium+Web:400,700);
+html, body{
+  margin: 0;
+  padding: 0;
+  font-family: "Titillium Web", sans-serif;
+}
+
+#info{
+  overflow-y: hidden;
+  position: fixed;
+  top: 65px;
+  left: 3vw;
+  bottom: 110px;
+  width: 15vw;
+  max-width: 15vw;
+  padding: 1vw;
+  background-blend-mode: overlay;
+  background-color: rgba(255, 255, 255, .5);
+  font: 11px/22px Titillium Web, Titillium Web, Titillium Web;
+  z-index: 2;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+
+}
+
+#beta{
+  overflow-y: hidden;
+  position: fixed;
+  max-width: 25vw;
+  right: 1vw;
+  vertical-align: middle;
+  white-space: wrap;
+  line-height: 18px;
+  top: 20px;
+  right: 1.5vw;
+  width: 280px;
+  padding: 10px;
+  height: 40px;
+  background-blend-mode: overlay;
+  background-color: rgba(255, 255, 255, .7);
+  border: 1px solid;
+  border-color: #eb4236;
+  font: 11px/22px Titillium Web, Titillium Web, Titillium Web;
+  z-index: 2;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  align-content: top;
+  align-items: top;
+  }
+
+h3{
+  font-size: 11pt;
+}
+
+p, td{
+  font-size: 9pt;
+}
+
+table{
+  border-collapse: collapse;
+}
+
+td{
+  border-top: 2px solid #ccc;
+}
+
+td.number{
+  text-align: right
+}
+
+ul{
+  left:0;
+  columns: 2;
+  list-style-type: none;
+  text-align: left;
+  margin: 0;
+  padding: 0;
+}
+
+table.table2 td{
+border-top: 0px;
+vertical-align: middle;
+}
+
+
+#displayed-list{
+  top:40px;
+}
+
+#map{
+  position: absolute;
+  top: 0;
+  left: 0vw;
+  bottom: 0;
+  right: 0;
+  z-index: 0;
+}
+.leaflet-bottom.leaflet-left{
+  width: 80%;
+  padding-bottom: 7px;
+  margin-left: 20vw;
+  font: 30px Titillium Web;
+  font-weight: 700;
+}
+.leaflet-control-container .leaflet-timeline-controls{
+  box-sizing: border-box;
+  width: 50%;
+  margin: 0;
+  margin-bottom: 15px;
+
+}
+.info {
+  padding: 6px 8px;
+  font: 14px/16px Titillium Web, Titillium Web, Titillium Web;
+  background: white;
+  background: rgba(255,255,255,0.8);
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  border-radius: 5px;
+}
+
+.tooltip {
+  background: white;
+  border: 1px solid black;
+  font: 8.5px/5px Titillium Web, Titillium Web, Titillium Web;
+}
+.leaflet-tooltip-left.myCSSClass::before {
+  border-left-color: black;
+}
+.leaflet-tooltip-right.myCSSClass::before {
+  border-right-color: black;
+}
+
+
+#myChart  {
+  background-color: rgba(255, 255, 255, .8);
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  border-radius: 10px;
+  width: 300px;
+}
+
+
+.chart  {
+  padding: 6px 8px;
+  height: 120px;
+  z-index: 1;
+  position: absolute;
+  vertical-align: bottom;
+  font: 12px Titillium Web;
+  padding-bottom: 0px;
+  bottom: 190px;
+  //left: 34vw;
+  right: 1vw;
+
+}
+.leaflet-right .leaflet-control {
+  margin-right: 0px;
+}
+
+.leaflet-top .leaflet-control{
+  margin-top: 0px;
+}
+
+
+.legend {
+  text-align: right;
+  background-blend-mode: overlay;
+  background-color: rgba(255, 255, 255, .5);
+  top: 90px;
+  width: 284px;
+  max-width: 25vw;
+  right: 1.5vw;
+  vertical-align: middle;
+  white-space: wrap;
+  line-height: 18px;
+  color: #555;
+  font: 11px/14px Titillium Web, Titillium Web, Titillium Web;
+}
+.legend i {
+  width: 18px;
+  height: 18px;
+  float: right;
+  margin-right: 8px;
+  opacity: 0.5;
+
+}
+
+.logo {
+  z-index: 3;
+  position: fixed;
+  bottom: 29px;
+  left: 16vw;
+
+}
+
+.d3logo {
+  z-index: 3;
+  position: fixed;
+  bottom: 29px;
+  left: 3.5vw;
+
+}
+
+.custom .leaflet-popup-tip,
+.custom .leaflet-popup-content-wrapper {
+  width: 250px;
+  background: #e93434;
+  color: #ffffff;
+  white-space: nowrap;
+}
+
+
+.overlay {
+  height: 0%;
+  width: 100%;
+  position: absolute;
+  opacity: .99;
+  z-index: 4;
+  top: 0;
+  left: 0;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0, 0.9);
+  overflow-y: scroll;
+  transition: 0.5s;
+}
+
+.overlay-content {
+  top: 5%;
+  width: 100%;
+  text-align: center;
+  }
+
+.overlay a{
+  padding: 8px;
+  text-decoration: none;
+  font-size: 30px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+  }
+
+.overlay p{
+  padding: 0px 150px 30px 150px;
+  text-decoration: none;
+  font-size: 18px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+  text-align: left;
+  }
+
+.overlay a:hover, .overlay a:focus {
+  color: #f1f1f1;
+}
+
+.overlay .closebtn {
+  position:absolute;
+  top: 0px;
+  left: 0px;
+  font-size: 60px;
+}
+
+@media screen and (max-height: 450px) {
+  .overlay {overflow-y: scroll;}
+  .overlay a {font-size: 15px}
+  .overlay .closebtn {
+    font-size: 40px;
+    top: 15px;
+    right: 35px;
+    overflow-y: scroll;
+  }
+}
+
+.overlay-btn{
+  font-size:15px;
+  cursor:pointer;
+  position:fixed;
+  z-index:1;
+  border: 2px solid;
+  background-color: #3CAAFA;
+  border-color: #eb4236;
+  border-radius: 4px;
+  color: white;
+  padding:2px;
+  top:20px;
+  left: 3vw;
+  width: 16.5vw;
+  text-align: center;
+}
+
+.leaflet-timeline-control{
+  font-size:15px !important;
+  height: 50px !important;
+}
+
+.chart-legend li span{
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  right: 5px;
+}
+
+#mask {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 9000;
+  background-color: black;
+  display: none;
+}
+
+#boxes .window {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 440px;
+  height: 270px;
+  display: none;
+  z-index: 9999;
+  padding: 20px;
+  border-radius: 15px;
+  text-align: center;
+}
+
+#boxes #dialog {
+  width: 550px;
+  height: 450px;
+  padding: 10px;
+  background-color: #ffffff;
+  font: 15px Titillium Web, Titillium Web, Titillium Web;
+
+}
+
+#dialog p{
+  font: 15px Titillium Web, Titillium Web, Titillium Web;
+}
+
+#dialog ul{
+  columns: 1;
+  list-style-type:disc;
+  list-style-position:inside;
+  font-size:15px;
+}
+
+#popupfoot {
+  font-size: 16pt;
+  position: absolute;
+  bottom: 0px;
+  width: 250px;
+  left: 250px;
+}
